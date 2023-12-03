@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="fr-FR" class="no-js">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v20.5 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>5 éléments nécessaires pour réussir votre curation de contenu (Infographie) - Redacteur Blog</title>
+	<meta name="description" content="Si vous souhaitez économiser vos efforts pour la production de contenu nous vous conseillons de vous tourner vers la curation de contenu. Cette pratique" />
+	<link rel="canonical" href="https://www.redacteur.com/blog/elements-post-curation-contenu/" />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="5 éléments nécessaires pour réussir votre curation de contenu (Infographie) - Redacteur Blog" />
+	<meta property="og:description" content="Si vous souhaitez économiser vos efforts pour la production de contenu nous vous conseillons de vous tourner vers la curation de contenu. Cette pratique" />
+	<meta property="og:url" content="https://www.redacteur.com/blog/elements-post-curation-contenu/" />
+	<meta property="og:site_name" content="Redacteur.com" />
+	<meta property="article:publisher" content="https://www.facebook.com/redacteurcom" />
+	<meta property="article:published_time" content="2018-12-18T08:30:14+00:00" />
+	<meta property="og:image" content="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg" />
+	<meta property="og:image:width" content="850" />
+	<meta property="og:image:height" content="600" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="Laura" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@Redacteurcom" />
+	<meta name="twitter:site" content="@Redacteurcom" />
+	<meta name="twitter:label1" content="Écrit par" />
+	<meta name="twitter:data1" content="Laura" />
+	<meta name="twitter:label2" content="Durée de lecture estimée" />
+	<meta name="twitter:data2" content="4 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#article","isPartOf":{"@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/"},"author":{"name":"Laura","@id":"https://www.redacteur.com/blog/#/schema/person/33c0ef04707fbe50a096f282050bb5f2"},"headline":"5 éléments nécessaires pour réussir votre curation de contenu (Infographie)","datePublished":"2018-12-18T08:30:14+00:00","dateModified":"2018-12-18T08:30:14+00:00","mainEntityOfPage":{"@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/"},"wordCount":746,"commentCount":0,"publisher":{"@id":"https://www.redacteur.com/blog/#organization"},"image":{"@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#primaryimage"},"thumbnailUrl":"https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg","articleSection":["Stratégie éditoriale"],"inLanguage":"fr-FR","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.redacteur.com/blog/elements-post-curation-contenu/#respond"]}]},{"@type":"WebPage","@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/","url":"https://www.redacteur.com/blog/elements-post-curation-contenu/","name":"5 éléments nécessaires pour réussir votre curation de contenu (Infographie) - Redacteur Blog","isPartOf":{"@id":"https://www.redacteur.com/blog/#website"},"primaryImageOfPage":{"@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#primaryimage"},"image":{"@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#primaryimage"},"thumbnailUrl":"https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg","datePublished":"2018-12-18T08:30:14+00:00","dateModified":"2018-12-18T08:30:14+00:00","description":"Si vous souhaitez économiser vos efforts pour la production de contenu nous vous conseillons de vous tourner vers la curation de contenu. Cette pratique","breadcrumb":{"@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#breadcrumb"},"inLanguage":"fr-FR","potentialAction":[{"@type":"ReadAction","target":["https://www.redacteur.com/blog/elements-post-curation-contenu/"]}]},{"@type":"ImageObject","inLanguage":"fr-FR","@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#primaryimage","url":"https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg","contentUrl":"https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg","width":850,"height":600,"caption":"Eléments curation de contenu"},{"@type":"BreadcrumbList","@id":"https://www.redacteur.com/blog/elements-post-curation-contenu/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://www.redacteur.com/blog/"},{"@type":"ListItem","position":2,"name":"Rédaction web","item":"https://www.redacteur.com/blog/redaction-web/"},{"@type":"ListItem","position":3,"name":"Stratégie éditoriale","item":"https://www.redacteur.com/blog/redaction-web/strategie-editoriale/"},{"@type":"ListItem","position":4,"name":"5 éléments nécessaires pour réussir votre curation de contenu (Infographie)"}]},{"@type":"WebSite","@id":"https://www.redacteur.com/blog/#website","url":"https://www.redacteur.com/blog/","name":"Redacteur.com","description":"redacteur","publisher":{"@id":"https://www.redacteur.com/blog/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.redacteur.com/blog/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"fr-FR"},{"@type":"Organization","@id":"https://www.redacteur.com/blog/#organization","name":"Redacteur.com","url":"https://www.redacteur.com/blog/","logo":{"@type":"ImageObject","inLanguage":"fr-FR","@id":"https://www.redacteur.com/blog/#/schema/logo/image/","url":"https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-blog.svg","contentUrl":"https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-blog.svg","width":1,"height":1,"caption":"Redacteur.com"},"image":{"@id":"https://www.redacteur.com/blog/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/redacteurcom","https://twitter.com/Redacteurcom","https://www.linkedin.com/company/redacteur-com","https://www.youtube.com/channel/UCgj9ySM9xy3gdL8qBafl9Uw/"]},{"@type":"Person","@id":"https://www.redacteur.com/blog/#/schema/person/33c0ef04707fbe50a096f282050bb5f2","name":"Laura","sameAs":["https://staging.codeur.com/blog"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="alternate" type="application/rss+xml" title="Redacteur.com &raquo; Flux" href="https://www.redacteur.com/blog/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Redacteur.com &raquo; Flux des commentaires" href="https://www.redacteur.com/blog/comments/feed/" />
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.redacteur.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.4"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='classic-theme-styles-css' href='https://www.redacteur.com/blog/wp-includes/css/classic-themes.min.css?ver=1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--gridlove-acc: #2567C5;--wp--preset--color--gridlove-meta: #818181;--wp--preset--color--gridlove-txt: #5e5e5e;--wp--preset--color--gridlove-bg: #ffffff;--wp--preset--color--gridlove-highlight-acc: #fafafa;--wp--preset--color--gridlove-highlight-txt: #ffffff;--wp--preset--color--gridlove-highlight-bg: #001160;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 12.8px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 20.8px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--normal: 16px;--wp--preset--font-size--huge: 27.2px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel='stylesheet' id='redux-extendify-styles-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/redux-framework/redux-core/assets/css/extendify-utilities.css?ver=1699605903' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='mks_shortcodes_simple_line_icons-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-flexible-shortcodes/css/simple-line/simple-line-icons.css?ver=1699605903' type='text/css' media='screen' />
+<link data-minify="1" rel='stylesheet' id='mks_shortcodes_css-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-flexible-shortcodes/css/style.css?ver=1699605903' type='text/css' media='screen' />
+<link data-minify="1" rel='stylesheet' id='gridlove-main-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/themes/gridlove/assets/css/min.css?ver=1699605903' type='text/css' media='all' />
+<style id='gridlove-main-inline-css' type='text/css'>
+body{font-size: 16px;}h1, .h1 {font-size: 40px;}h2, .h2,.col-lg-12 .gridlove-post-b .h3 {font-size: 26px;}h3, .h3 {font-size: 22px;}h4, .h4 {font-size: 20px;}h5, .h5 {font-size: 18px;}h6, .h6 {font-size: 16px;}.widget, .gridlove-header-responsive .sub-menu, .gridlove-site-header .sub-menu{font-size: 14px;}.gridlove-main-navigation {font-size: 16px;}.gridlove-post {font-size: 16px;}body{background-color: #f3f3f3;color: #5e5e5e;font-family: 'Poppins';font-weight: 400;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6,blockquote,thead td,.comment-author b,q:before,#bbpress-forums .bbp-forum-title, #bbpress-forums .bbp-topic-permalink{color: #111111;font-family: 'Poppins';font-weight: 700;}.gridlove-main-nav a,.gridlove-posts-widget a{font-family: 'Poppins';font-weight: 500;}.gridlove-header-top{background-color: #222222;color: #dddddd;}.gridlove-header-top a{color: #dddddd;}.gridlove-header-top a:hover{color: #ffffff;}.gridlove-header-wrapper,.gridlove-header-middle .sub-menu,.gridlove-header-responsive,.gridlove-header-responsive .sub-menu{background-color:#ffffff; }.gridlove-header-middle,.gridlove-header-middle a,.gridlove-header-responsive,.gridlove-header-responsive a{color: #111111;}.gridlove-header-middle a:hover,.gridlove-header-middle .gridlove-sidebar-action:hover,.gridlove-header-middle .gridlove-actions-button > span:hover,.gridlove-header-middle .current_page_item > a,.gridlove-header-middle .current_page_ancestor > a,.gridlove-header-middle .current-menu-item > a,.gridlove-header-middle .current-menu-ancestor > a,.gridlove-header-middle .gridlove-category-menu article:hover a,.gridlove-header-responsive a:hover{color: #ffb21e;}.gridlove-header-middle .active>span,.gridlove-header-middle .gridlove-main-nav>li.menu-item-has-children:hover>a,.gridlove-header-middle .gridlove-social-icons:hover>span,.gridlove-header-responsive .active>span{background-color: rgba(17,17,17,0.05)}.gridlove-header-middle .gridlove-button-search{background-color: #ffb21e;}.gridlove-header-middle .gridlove-search-form input{border-color: rgba(17,17,17,0.1)}.gridlove-header-middle .sub-menu,.gridlove-header-responsive .sub-menu{border-top: 1px solid rgba(17,17,17,0.05)}.gridlove-header-middle{height: 80px;}.gridlove-logo{max-height: 80px;}.gridlove-branding-bg{background:#f0233b;}.gridlove-header-responsive .gridlove-actions-button:hover >span{color:#ffb21e;}.gridlove-sidebar-action .gridlove-bars:before,.gridlove-sidebar-action .gridlove-bars:after{background:#111111;}.gridlove-sidebar-action:hover .gridlove-bars:before,.gridlove-sidebar-action:hover .gridlove-bars:after{background:#ffb21e;}.gridlove-sidebar-action .gridlove-bars{border-color: #111111;}.gridlove-sidebar-action:hover .gridlove-bars{border-color:#ffb21e;}.gridlove-header-bottom .sub-menu{ background-color:#ffffff;}.gridlove-header-bottom .sub-menu a{color:#111111;}.gridlove-header-bottom .sub-menu a:hover,.gridlove-header-bottom .gridlove-category-menu article:hover a{color:#009cff;}.gridlove-header-bottom{background-color:#f2f2f2;}.gridlove-header-bottom,.gridlove-header-bottom a{color: #111111;}.gridlove-header-bottom a:hover,.gridlove-header-bottom .gridlove-sidebar-action:hover,.gridlove-header-bottom .gridlove-actions-button > span:hover,.gridlove-header-bottom .current_page_item > a,.gridlove-header-bottom .current_page_ancestor > a,.gridlove-header-bottom .current-menu-item > a,.gridlove-header-bottom .current-menu-ancestor > a {color: #009cff;}.gridlove-header-bottom .active>span,.gridlove-header-bottom .gridlove-main-nav>li.menu-item-has-children:hover>a,.gridlove-header-bottom .gridlove-social-icons:hover>span{background-color: rgba(17,17,17,0.05)}.gridlove-header-bottom .gridlove-search-form input{border-color: rgba(17,17,17,0.1)}.gridlove-header-bottom,.gridlove-header-bottom .sub-menu{border-top: 1px solid rgba(17,17,17,0.07)}.gridlove-header-bottom .gridlove-button-search{background-color: #009cff;}.gridlove-header-sticky,.gridlove-header-sticky .sub-menu{background-color:#ffffff; }.gridlove-header-sticky,.gridlove-header-sticky a{color: #111111;}.gridlove-header-sticky a:hover,.gridlove-header-sticky .gridlove-sidebar-action:hover,.gridlove-header-sticky .gridlove-actions-button > span:hover,.gridlove-header-sticky .current_page_item > a,.gridlove-header-sticky .current_page_ancestor > a,.gridlove-header-sticky .current-menu-item > a,.gridlove-header-sticky .current-menu-ancestor > a,.gridlove-header-sticky .gridlove-category-menu article:hover a{color: #ffb21e;}.gridlove-header-sticky .active>span,.gridlove-header-sticky .gridlove-main-nav>li.menu-item-has-children:hover>a,.gridlove-header-sticky .gridlove-social-icons:hover>span{background-color: rgba(17,17,17,0.05)}.gridlove-header-sticky .gridlove-search-form input{border-color: rgba(17,17,17,0.1)}.gridlove-header-sticky .sub-menu{border-top: 1px solid rgba(17,17,17,0.05)}.gridlove-header-sticky .gridlove-button-search{background-color: #ffb21e;}.gridlove-cover-area,.gridlove-cover{height:500px; }.gridlove-cover-area .gridlove-cover-bg img{width:1500px; }.gridlove-box,#disqus_thread{background: #ffffff;}a{color: #5e5e5e;}.entry-title a{ color: #111111;}a:hover,.comment-reply-link,#cancel-comment-reply-link,.gridlove-box .entry-title a:hover,.gridlove-posts-widget article:hover a{color: #2567C5;}.entry-content p a,.widget_text a,.entry-content ul a,.entry-content ol a,.gridlove-text-module-content p a{color: #2567C5; border-color: rgba(37,103,197,0.8);}.entry-content p a:hover,.widget_text a:hover,.entry-content ul a:hover,.entry-content ol a:hover,.gridlove-text-module-content p a:hover{border-bottom: 1px solid transparent;}.comment-reply-link:hover,.gallery .gallery-item a:after, .wp-block-gallery .blocks-gallery-item a:after,.wp-block-gallery figure a:after,.entry-content a.gridlove-popup-img {color: #5e5e5e; }.gridlove-post-b .box-col-b:only-child .entry-title a,.gridlove-post-d .entry-overlay:only-child .entry-title a{color: #111111;}.gridlove-post-b .box-col-b:only-child .entry-title a:hover,.gridlove-post-d .entry-overlay:only-child .entry-title a:hover,.gridlove-content .entry-header .gridlove-breadcrumbs a,.gridlove-content .entry-header .gridlove-breadcrumbs a:hover,.module-header .gridlove-breadcrumbs a,.module-header .gridlove-breadcrumbs a:hover { color: #2567C5; }.gridlove-post-b .box-col-b:only-child .meta-item,.gridlove-post-b .box-col-b:only-child .entry-meta a,.gridlove-post-b .box-col-b:only-child .entry-meta span,.gridlove-post-d .entry-overlay:only-child .meta-item,.gridlove-post-d .entry-overlay:only-child .entry-meta a,.gridlove-post-d .entry-overlay:only-child .entry-meta span {color: #818181;}.entry-meta .meta-item, .entry-meta a, .entry-meta span,.comment-metadata a{color: #818181;}blockquote{color: rgba(17,17,17,0.8);}blockquote:before{color: rgba(17,17,17,0.15);}.entry-meta a:hover{color: #111111;}.widget_tag_cloud a,.entry-tags a,.entry-content .wp-block-tag-cloud a{ background: rgba(94,94,94,0.1); color: #5e5e5e; }.submit,.gridlove-button,.mks_autor_link_wrap a,.mks_read_more a,input[type="submit"],button[type="submit"],.gridlove-cat, .gridlove-pill,.gridlove-button-search,body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button,.add_to_cart_button{color:#FFF;background-color: #2567C5;}body div.wpforms-container-full .wpforms-form input[type=submit]:hover, body div.wpforms-container-full .wpforms-form input[type=submit]:focus, body div.wpforms-container-full .wpforms-form input[type=submit]:active, body div.wpforms-container-full .wpforms-form button[type=submit]:hover, body div.wpforms-container-full .wpforms-form button[type=submit]:focus, body div.wpforms-container-full .wpforms-form button[type=submit]:active, body div.wpforms-container-full .wpforms-form .wpforms-page-button:hover, body div.wpforms-container-full .wpforms-form .wpforms-page-button:active, body div.wpforms-container-full .wpforms-form .wpforms-page-button:focus {color:#FFF;background-color: #2567C5;}.wp-block-button__link{background-color: #2567C5; }.gridlove-button:hover,.add_to_cart_button:hover{color:#FFF;}.gridlove-share a:hover{background:rgba(17, 17, 17, .8);color:#FFF;}.gridlove-pill:hover,.gridlove-author-links a:hover,.entry-category a:hover{background: #111;color: #FFF;}.gridlove-cover-content .entry-category a:hover,.entry-overlay .entry-category a:hover,.gridlove-highlight .entry-category a:hover,.gridlove-box.gridlove-post-d .entry-overlay .entry-category a:hover,.gridlove-post-a .entry-category a:hover,.gridlove-highlight .gridlove-format-icon{background: #FFF;color: #111;}.gridlove-author, .gridlove-prev-next-nav,.comment .comment-respond{border-color: rgba(94,94,94,0.1);}.gridlove-load-more a,.gridlove-pagination .gridlove-next a,.gridlove-pagination .gridlove-prev a,.gridlove-pagination .next,.gridlove-pagination .prev,.gridlove-infinite-scroll a,.double-bounce1, .double-bounce2,.gridlove-link-pages > span,.module-actions ul.page-numbers span.page-numbers{color:#FFF;background-color: #2567C5;}.gridlove-pagination .current{background-color:rgba(94,94,94,0.1);}.gridlove-highlight{background: #001160;}.gridlove-highlight,.gridlove-highlight h4,.gridlove-highlight a{color: #ffffff;}.gridlove-highlight .entry-meta .meta-item, .gridlove-highlight .entry-meta a, .gridlove-highlight .entry-meta span,.gridlove-highlight p{color: rgba(255,255,255,0.8);}.gridlove-highlight .gridlove-author-links .fa-link,.gridlove-highlight .gridlove_category_widget .gridlove-full-color li a:after{background: #fafafa;}.gridlove-highlight .entry-meta a:hover{color: #ffffff;}.gridlove-highlight.gridlove-post-d .entry-image a:after{background-color: rgba(0,17,96,0.7);}.gridlove-highlight.gridlove-post-d:hover .entry-image a:after{background-color: rgba(0,17,96,0.9);}.gridlove-highlight.gridlove-post-a .entry-image:hover>a:after, .gridlove-highlight.gridlove-post-b .entry-image:hover a:after{background-color: rgba(0,17,96,0.2);}.gridlove-highlight .gridlove-slider-controls > div{background-color: rgba(255,255,255,0.1);color: #ffffff; }.gridlove-highlight .gridlove-slider-controls > div:hover{background-color: rgba(255,255,255,0.3);color: #ffffff; }.gridlove-highlight.gridlove-box .entry-title a:hover{color: #fafafa;}.gridlove-highlight.widget_meta a, .gridlove-highlight.widget_recent_entries li, .gridlove-highlight.widget_recent_comments li, .gridlove-highlight.widget_nav_menu a, .gridlove-highlight.widget_archive li, .gridlove-highlight.widget_pages a{border-color: rgba(255,255,255,0.1);}.gridlove-cover-content .entry-meta .meta-item, .gridlove-cover-content .entry-meta a, .gridlove-cover-content .entry-meta span,.gridlove-cover-area .gridlove-breadcrumbs,.gridlove-cover-area .gridlove-breadcrumbs a,.gridlove-cover-area .gridlove-breadcrumbs .breadcrumb_last,body .gridlove-content .entry-overlay .gridlove-breadcrumbs {color: rgba(255, 255, 255, .8);}.gridlove-cover-content .entry-meta a:hover,.gridlove-cover-area .gridlove-breadcrumbs a:hover {color: rgba(255, 255, 255, 1);}.module-title h2,.module-title .h2{ color: #111111; }.gridlove-action-link,.gridlove-slider-controls > div,.module-actions ul.page-numbers .next.page-numbers,.module-actions ul.page-numbers .prev.page-numbers{background: rgba(17,17,17,0.1); color: #111111; }.gridlove-slider-controls > div:hover,.gridlove-action-link:hover,.module-actions ul.page-numbers .next.page-numbers:hover,.module-actions ul.page-numbers .prev.page-numbers:hover{color: #111111;background: rgba(17,17,17,0.3); }.gridlove-pn-ico,.gridlove-author-links .fa-link{background: rgba(94,94,94,0.1); color: #5e5e5e;}.gridlove-prev-next-nav a:hover .gridlove-pn-ico{background: rgba(37,103,197,1); color: #ffffff;}.widget_meta a,.widget_recent_entries li,.widget_recent_comments li,.widget_nav_menu a,.widget_archive li,.widget_pages a,.widget_categories li,.gridlove_category_widget .gridlove-count-color li,.widget_categories .children li,.widget_archiv .children li{border-color: rgba(94,94,94,0.1);}.widget_recent_entries a:hover,.menu-item-has-children.active > span,.menu-item-has-children.active > a,.gridlove-nav-widget-acordion:hover,.widget_recent_comments .recentcomments a.url:hover{color: #2567C5;}.widget_recent_comments .url,.post-date,.widget_recent_comments .recentcomments,.gridlove-nav-widget-acordion,.widget_archive li,.rss-date,.widget_categories li,.widget_archive li{color:#818181;}.widget_pages .children,.widget_nav_menu .sub-menu{background:#2567C5;color:#FFF;}.widget_pages .children a,.widget_nav_menu .sub-menu a,.widget_nav_menu .sub-menu span,.widget_pages .children span{color:#FFF;}.widget_tag_cloud a:hover,.entry-tags a:hover,.entry-content .wp-block-tag-cloud a:hover{background: #2567C5;color:#FFF;}.gridlove-footer{background: #111111;color: #ffffff;}.gridlove-footer .widget-title{color: #ffffff;}.gridlove-footer a{color: rgba(255,255,255,0.8);}.gridlove-footer a:hover{color: #ffffff;}.gridlove-footer .widget_recent_comments .url, .gridlove-footer .post-date, .gridlove-footer .widget_recent_comments .recentcomments, .gridlove-footer .gridlove-nav-widget-acordion, .gridlove-footer .widget_archive li, .gridlove-footer .rss-date{color: rgba(255,255,255,0.8); }.gridlove-footer .widget_meta a, .gridlove-footer .widget_recent_entries li, .gridlove-footer .widget_recent_comments li, .gridlove-footer .widget_nav_menu a, .gridlove-footer .widget_archive li, .gridlove-footer .widget_pages a,.gridlove-footer table,.gridlove-footer td,.gridlove-footer th,.gridlove-footer .widget_calendar table,.gridlove-footer .widget.widget_categories select,.gridlove-footer .widget_calendar table tfoot tr td{border-color: rgba(255,255,255,0.2);}table,thead,td,th,.widget_calendar table{ border-color: rgba(94,94,94,0.1);}input[type="text"], input[type="email"],input[type="search"], input[type="url"], input[type="tel"], input[type="number"], input[type="date"], input[type="password"], select, textarea{border-color: rgba(94,94,94,0.2);}.gridlove-site-content div.mejs-container .mejs-controls {background-color: rgba(94,94,94,0.1);}body .gridlove-site-content .mejs-controls .mejs-time-rail .mejs-time-current{background: #2567C5;}body .gridlove-site-content .mejs-video.mejs-container .mejs-controls{background-color: rgba(255,255,255,0.9);}.wp-block-cover .wp-block-cover-image-text, .wp-block-cover .wp-block-cover-text, .wp-block-cover h2, .wp-block-cover-image .wp-block-cover-image-text, .wp-block-cover-image .wp-block-cover-text, .wp-block-cover-image h2{font-family: 'Poppins';font-weight: 700; }.wp-block-cover-image .wp-block-cover-image-text, .wp-block-cover-image h2{font-size: 26px;}.widget_display_replies li, .widget_display_topics li{ color:#818181; }.has-small-font-size{ font-size: 12px;}.has-large-font-size{ font-size: 20px;}.has-huge-font-size{ font-size: 25px;}@media(min-width: 1024px){.has-small-font-size{ font-size: 12px;}.has-normal-font-size{ font-size: 16px;}.has-large-font-size{ font-size: 20px;}.has-huge-font-size{ font-size: 27px;}}.has-gridlove-acc-background-color{ background-color: #2567C5;}.has-gridlove-acc-color{ color: #2567C5;}.has-gridlove-meta-background-color{ background-color: #818181;}.has-gridlove-meta-color{ color: #818181;}.has-gridlove-txt-background-color{ background-color: #5e5e5e;}.has-gridlove-txt-color{ color: #5e5e5e;}.has-gridlove-bg-background-color{ background-color: #ffffff;}.has-gridlove-bg-color{ color: #ffffff;}.has-gridlove-highlight-acc-background-color{ background-color: #fafafa;}.has-gridlove-highlight-acc-color{ color: #fafafa;}.has-gridlove-highlight-txt-background-color{ background-color: #ffffff;}.has-gridlove-highlight-txt-color{ color: #ffffff;}.has-gridlove-highlight-bg-background-color{ background-color: #001160;}.has-gridlove-highlight-bg-color{ color: #001160;}.gridlove-cats .gridlove-cat .entry-overlay-wrapper .entry-image:after, .gridlove-cat.gridlove-post-d .entry-image a:after { background-color: rgba(37,103,197,0.7); }.gridlove-cat.gridlove-post-d:hover .entry-image a:after { background-color: rgba(37,103,197,0.9); }
+</style>
+<link data-minify="1" rel='stylesheet' id='gridlove_child_load_scripts-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/themes/gridlove-child/style.css?ver=1699605903' type='text/css' media='screen' />
+<link data-minify="1" rel='stylesheet' id='meks-ads-widget-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-easy-ads-widget/css/style.css?ver=1699605903' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='meks_instagram-widget-styles-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-easy-instagram-widget/css/widget.css?ver=1699605903' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='meks-flickr-widget-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-simple-flickr-widget/css/style.css?ver=1699605903' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='meks-author-widget-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-smart-author-widget/css/style.css?ver=1699605903' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='meks-social-widget-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-smart-social-widget/css/style.css?ver=1699605903' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='meks_ess-main-css' href='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-easy-social-share/assets/css/main.css?ver=1699605903' type='text/css' media='all' />
+<style id='rocket-lazyload-inline-css' type='text/css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://www.redacteur.com/blog/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}.wp-embed-responsive .wp-has-aspect-ratio .rll-youtube-player{position:absolute;padding-bottom:0;width:100%;height:100%;top:0;bottom:0;left:0;right:0}
+</style>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/themes/gridlove-child/assets/js/myscript.js?ver=1699605903' id='fichier-js-js' defer></script>
+<link rel="https://api.w.org/" href="https://www.redacteur.com/blog/wp-json/" /><link rel="alternate" type="application/json" href="https://www.redacteur.com/blog/wp-json/wp/v2/posts/14360" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.redacteur.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.redacteur.com/blog/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 6.1.4" />
+<link rel='shortlink' href='https://www.redacteur.com/blog/?p=14360' />
+<link rel="alternate" type="application/json+oembed" href="https://www.redacteur.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.redacteur.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F&#038;format=xml" />
+<meta name="generator" content="Redux 4.4.0" /><link rel="icon" href="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-icon-1-60x60.png" sizes="32x32" />
+<link rel="icon" href="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-icon-1-270x270.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-icon-1-270x270.png" />
+<meta name="msapplication-TileImage" content="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-icon-1-270x270.png" />
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<!-- CDN cookies -->
+	<link data-minify="1" rel="stylesheet" href="https://www.redacteur.com/blog/wp-content/cache/min/6/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css?ver=1699605903">
+	<!-- Matomo Tag Manager -->
+	<script type="rocketlazyloadscript">
+	var _mtm = window._mtm = window._mtm || [];
+	_mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+	var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	g.async=true; g.src='https://stats.redacteur.com/js/container_GY7KFyrc.js'; s.parentNode.insertBefore(g,s);
+	</script>
+	<!-- End Matomo Tag Manager -->
+</head>
+
+<body class="post-template-default single single-post postid-14360 single-format-standard wp-embed-responsive unknown gridlove-v_2_1_1 gridlove-child">
+
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>	
+			
+	
+		<header id="header" class="gridlove-site-header hidden-md-down  gridlove-header-shadow">
+
+				
+				<div class="gridlove-header-5">
+    <div class="gridlove-header-bottom">
+	    <div class="container">
+	        <div class="gridlove-slot-l">
+	            <nav class="gridlove-main-navigation">	
+				<ul id="menu-gridlove-secondary" class="gridlove-main-nav gridlove-menu"><li id="menu-item-23669" class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23669"><a href="https://www.codeur.com/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Codeur Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-codeur-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-codeur-groupe.svg" alt="Codeur Blog" width="30" height="30"/></noscript></a></li>
+<li id="menu-item-23673" class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23673"><a href="https://graphiste.com/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Graphiste Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-graphiste-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-graphiste-groupe.svg" alt="Graphiste Blog" width="30" height="30"/></noscript></a></li>
+<li id="menu-item-23726" class="logo-groupe actualsite menu-item menu-item-type-custom menu-item-object-custom menu-item-23726"><a href="/blog/"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Redacteur Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-redac-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-redac-groupe.svg" alt="Redacteur Blog" width="30" height="30"/></noscript></a></li>
+<li id="menu-item-23730" class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23730"><a href="https://www.facture.net/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Facture Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-facture-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-facture-groupe.svg" alt="Facture Blog" width="30" height="30"/></noscript></a></li>
+<li id="menu-item-23912" class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23912"><a href="https://traduc.com/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Traduc Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-traduc-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-traduc-groupe.svg" alt="Traduc Blog" width="30" height="30"/></noscript></a></li>
+</ul>			<div id="triangle-code"></div>
+	</nav>	        </div>
+	        <div class="gridlove-slot-r">
+				<nav class="gridlove-main-navigation">	
+				<ul id="menu-gridlove-secondary-2" class="gridlove-main-nav gridlove-menu"><li id="menu-item-24160" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24160"><a href="https://www.redacteur.com/?source=blog-navbar"><i class="fa fa-pencil"></i> Stratégie de contenu</a></li>
+<li id="menu-item-24292" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24292"><a href="https://www.redacteur.com/redaction/?source=blog-navbar"><i class="fa fa-star"></i> Nos spécialités</a></li>
+<li id="menu-item-24315" class="gridlove-sidebar-action menu-item menu-item-type-custom menu-item-object-custom menu-item-24315"><a href="#"><i class="fa fa-bars"></i> Tous nos services</a></li>
+</ul>	</nav>	        </div>
+	    </div>
+    </div>
+	<div class="gridlove-header-wrapper">
+        <div class="gridlove-header-middle container">
+            <div class="gridlove-slot-l">
+                
+<div class="gridlove-site-branding  ">
+			<span class="site-title h1"><a href="https://www.redacteur.com/blog/" rel="home"><img width="13659" height="1563" class="gridlove-logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2013659%201563'%3E%3C/svg%3E" alt="Redacteur.com" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-blog_midheight.svg"><noscript><img width="13659" height="1563" class="gridlove-logo" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-blog_midheight.svg" alt="Redacteur.com"></noscript></a></span>
+	
+	
+</div>
+
+            </div>
+            <div class="gridlove-slot-r">
+                <nav class="gridlove-main-navigation">	
+				<ul id="menu-categories" class="gridlove-main-nav gridlove-menu"><li id="menu-item-33804" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33804"><a href="https://www.redacteur.com/blog/contenu-web/">Content marketing</a></li>
+<li id="menu-item-33815" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-33815"><a href="https://www.redacteur.com/blog/redaction-web/">Rédaction web</a></li>
+<li id="menu-item-33822" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33822"><a href="https://www.redacteur.com/blog/seo/">Stratégie SEO</a></li>
+<li id="menu-item-33831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33831"><a href="https://www.redacteur.com/blog/definition/">Lexique</a></li>
+</ul>	</nav>					<ul class="gridlove-actions gridlove-menu">
+		<li class="gridlove-actions-button gridlove-action-search">
+	<span style="border-color: #2567C5;color: #2567C5;margin: 5px 15px;">
+		<i class="fa fa-search"></i>
+	</span>
+	<ul class="sub-menu">
+		<li>
+			<form class="gridlove-search-form" action="https://www.redacteur.com/blog/" method="get"><input name="s" type="text" value="" placeholder="Rechercher..." /><button type="submit" class="gridlove-button-search">Rechercher</button></form>		</li>
+	</ul>
+</li>
+	</ul>
+				<nav class="gridlove-main-navigation">	
+				<ul id="menu-gridlove-button" class="gridlove-main-nav gridlove-menu"><li id="menu-item-24593" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24593"><a href="/blog/inscription-a-la-newsletter/"><span class="mks_button mks_button_small rounded" style="color: #FFFFFF; background-color: #ffb21e"><i class="fa fa-envelope"></I>Newsletter</span></a></li>
+</ul>	</nav>            </div>
+        </div>
+    </div>
+</div>
+
+				
+		</header>
+
+		<div class="gridlove-header-bottom hidden-lg-up">
+	<div class="container">
+			<div class="gridlove-slot-l">
+					<nav class="gridlove-main-navigation">	
+				<ul id="menu-gridlove-secondary-1" class="gridlove-main-nav gridlove-menu"><li class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23669"><a href="https://www.codeur.com/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Codeur Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-codeur-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-codeur-groupe.svg" alt="Codeur Blog" width="30" height="30"/></noscript></a></li>
+<li class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23673"><a href="https://graphiste.com/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Graphiste Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-graphiste-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-graphiste-groupe.svg" alt="Graphiste Blog" width="30" height="30"/></noscript></a></li>
+<li class="logo-groupe actualsite menu-item menu-item-type-custom menu-item-object-custom menu-item-23726"><a href="/blog/"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Redacteur Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-redac-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-redac-groupe.svg" alt="Redacteur Blog" width="30" height="30"/></noscript></a></li>
+<li class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23730"><a href="https://www.facture.net/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Facture Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-facture-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-facture-groupe.svg" alt="Facture Blog" width="30" height="30"/></noscript></a></li>
+<li class="logo-groupe menu-item menu-item-type-custom menu-item-object-custom menu-item-23912"><a href="https://traduc.com/blog/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=navbar"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2030%2030'%3E%3C/svg%3E" alt="Traduc Blog" width="30" height="30" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-traduc-groupe.svg"/><noscript><img src="/blog/wp-content/themes/gridlove-child/assets/img/logo-traduc-groupe.svg" alt="Traduc Blog" width="30" height="30"/></noscript></a></li>
+</ul>			<div id="triangle-code"></div>
+	</nav>			</div>
+	</div>
+</div>
+<div id="gridlove-header-responsive" class="gridlove-header-responsive hidden-lg-up">
+
+	<div class="container">
+		
+		
+<div class="gridlove-site-branding  ">
+			<span class="site-title h1"><a href="https://www.redacteur.com/blog/" rel="home"><img width="13659" height="1563" class="gridlove-logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2013659%201563'%3E%3C/svg%3E" alt="Redacteur.com" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-blog_midheight.svg"><noscript><img width="13659" height="1563" class="gridlove-logo" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/10/logo-redacteur-blog_midheight.svg" alt="Redacteur.com"></noscript></a></span>
+	
+	
+</div>
+
+
+		<ul class="gridlove-actions gridlove-menu">
+
+								<li class="gridlove-actions-button gridlove-action-search">
+	<span style="border-color: #2567C5;color: #2567C5;margin: 5px 15px;">
+		<i class="fa fa-search"></i>
+	</span>
+	<ul class="sub-menu">
+		<li>
+			<form class="gridlove-search-form" action="https://www.redacteur.com/blog/" method="get"><input name="s" type="text" value="" placeholder="Rechercher..." /><button type="submit" class="gridlove-button-search">Rechercher</button></form>		</li>
+	</ul>
+</li>
+							<li class="gridlove-actions-button">
+	<span class="gridlove-sidebar-action">
+		<i class="fa fa-bars"></i>
+	</span>
+</li>				
+	
+</ul>
+	</div>
+
+</div>
+
+	
+
+
+
+
+	<div class="container gridlove-ban-below-header"><div class="gridlove-ban"><div class="inner-content cta-online-wrapper">
+   <a class="cta-online cta-online-codeur" href="https://www.redacteur.com/?source=blog-video" target="_blank">
+      <div class="cta-online__video-wrapper">
+         <video class="cta-online__video" autoplay="" muted="" loop="" preload="none" playsinline="">
+            <source src="/blog/wp-content/uploads/2022/05/banniere-codeur.com_.mp4">
+         </video>
+      </div>
+      <div class="cta-online__txt">
+         <p class="cta-online__txt__solution">Vos contenus optimisés pour le SEO, clé en main</p>
+         <span class="mks_button mks_button_medium button-videoban rounded">Commander des textes</span>
+      </div>
+   </a>
+</div></div></div>
+
+
+<div id="content" class="gridlove-site-content container gridlove-sidebar-right">
+
+    <div class="row">
+
+    	
+		<div class="gridlove-share-wrapper">
+			<div class="gridlove-share gridlove-box gridlove-sticky-share">
+			<div class="meks_ess circle no-labels solid "><a href="#" class="meks_ess-item socicon-linkedin" data-url="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F"><span>LinkedIn</span></a><a href="#" class="meks_ess-item socicon-twitter" data-url="http://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F&amp;text=5%20%C3%A9l%C3%A9ments%20n%C3%A9cessaires%20pour%20r%C3%A9ussir%20votre%20curation%20de%20contenu%20%28Infographie%29"><span>Twitter</span></a><a href="#" class="meks_ess-item socicon-facebook" data-url="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F&amp;t=5%20%C3%A9l%C3%A9ments%20n%C3%A9cessaires%20pour%20r%C3%A9ussir%20votre%20curation%20de%20contenu%20%28Infographie%29"><span>Facebook</span></a><a href="#" class="meks_ess-item socicon-reddit" data-url="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F&amp;title=5%20%C3%A9l%C3%A9ments%20n%C3%A9cessaires%20pour%20r%C3%A9ussir%20votre%20curation%20de%20contenu%20%28Infographie%29"><span>Reddit</span></a><a href="#" class="meks_ess-item socicon-pinterest" data-url="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F&amp;media=https%3A%2F%2Fwww.redacteur.com%2Fblog%2Fwp-content%2Fuploads%2Fsites%2F6%2F2018%2F12%2Fredacteur-element-curation-contenu.jpg&amp;description=5%20%C3%A9l%C3%A9ments%20n%C3%A9cessaires%20pour%20r%C3%A9ussir%20votre%20curation%20de%20contenu%20%28Infographie%29"><span>Pinterest</span></a><a href="https://api.whatsapp.com/send?text=5%20%C3%A9l%C3%A9ments%20n%C3%A9cessaires%20pour%20r%C3%A9ussir%20votre%20curation%20de%20contenu%20%28Infographie%29 https%3A%2F%2Fwww.redacteur.com%2Fblog%2Felements-post-curation-contenu%2F" class="meks_ess-item socicon-whatsapp prevent-share-popup"><span>WhatsApp</span></a><a href="/cdn-cgi/l/email-protection#ac93dfd9cec6c9cfd89199899e9c89ef9f89ed95c089ef9f89ed95c1c9c2d8df899e9cc289ef9f89ed95cfc9dfdfcdc5dec9df899e9cdcc3d9de899e9cde89ef9f89ed95d9dfdfc5de899e9cdac3d8dec9899e9ccfd9decdd8c5c3c2899e9cc8c9899e9ccfc3c2d8c9c2d9899e9c899e94e5c2cac3cbdecddcc4c5c9899e958acdc1dc97cec3c8d591c4d8d8dcdf899fed899eea899eeadbdbdb82dec9c8cdcfd8c9d9de82cfc3c1899eeacec0c3cb899eeac9c0c9c1c9c2d8df81dcc3dfd881cfd9decdd8c5c3c281cfc3c2d8c9c2d9899eea" class="meks_ess-item  socicon-mail prevent-share-popup "><span>Email</span></a></div>			</div>
+		</div>
+	
+
+        <div class="gridlove-content gridlove-single-layout-3">
+
+            
+                <article id="post-14360" class="gridlove-box box-vm post-14360 post type-post status-publish format-standard has-post-thumbnail hentry category-strategie-editoriale">
+
+<div class="box-inner-p-smaller box-single">
+	<div class="entry-header">
+	        <div id="gridlove-breadcrumbs" class="gridlove-breadcrumbs"><span><span><a href="https://www.redacteur.com/blog/">Blog</a></span> » <span><a href="https://www.redacteur.com/blog/redaction-web/">Rédaction web</a></span> » <span><a href="https://www.redacteur.com/blog/redaction-web/strategie-editoriale/">Stratégie éditoriale</a></span></span></div>    	<div class="entry-category">
+	    
+	    	</div>
+
+    <h1 class="entry-title">5 éléments nécessaires pour réussir votre curation de contenu (Infographie)</h1>    	<div class="entry-meta"><div class="meta-item meta-date"><span class="updated">18 décembre 2018</span></div><div class="meta-item meta-views">3 210 vues</div><div class="meta-item meta-rtime">4 minutes</div></div>
+    
+</div></div>
+
+    <div class="entry-image">
+        <img width="740" height="522" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20740%20522'%3E%3C/svg%3E" class="attachment-gridlove-single size-gridlove-single wp-post-image" alt="Eléments curation de contenu" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-740x522.jpg 740w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-300x212.jpg 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-768x542.jpg 768w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-60x42.jpg 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-370x261.jpg 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-270x191.jpg 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-570x402.jpg 570w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg 850w" data-lazy-sizes="(max-width: 740px) 100vw, 740px" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-740x522.jpg" /><noscript><img width="740" height="522" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-740x522.jpg" class="attachment-gridlove-single size-gridlove-single wp-post-image" alt="Eléments curation de contenu" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-740x522.jpg 740w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-300x212.jpg 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-768x542.jpg 768w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-60x42.jpg 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-370x261.jpg 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-270x191.jpg 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu-570x402.jpg 570w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/redacteur-element-curation-contenu.jpg 850w" sizes="(max-width: 740px) 100vw, 740px" /></noscript>            </div>
+ 
+                        
+<div class="box-inner-p-bigger box-single">
+
+    
+	<div class="gridlove-ban"><blockquote class="entry-content"><p>Sur Redacteur.com, faites rédiger vos contenus web par des professionnels. <a href="https://www.redacteur.com/redacteur-web?source=blog-above-single-post" target="_blank">Trouver un rédacteur web</a>
+</p></blockquote></div>
+
+<div class="entry-content">
+    
+    	    
+    <p>Si vous souhaitez économiser vos efforts pour la production de contenu nous vous conseillons de vous tourner vers la <a href="https://www.redacteur.com/blog/creation-vs-curation-de-contenu/" target="_blank" rel="noopener noreferrer">curation de contenu</a>.</p>
+<p>Cette pratique est d’ailleurs très <a href="https://www.redacteur.com/blog/booster-seo-curation-contenu%e2%80%89/" target="_blank" rel="noopener noreferrer">bénéfique pour votre SEO</a>, mais aussi pour votre audience qui apprécie votre expertise et votre sélection de contenus indépendants.</p>
+<p>Pour rappel, la curation de contenu consiste à partager des informations pertinentes et de qualité provenant d’<a href="https://www.redacteur.com/blog/sources-contenu-fiable/" target="_blank" rel="noopener noreferrer">autres sources</a>.</p>
+<p>Pour vous aider dans cette stratégie, <a href="https://www.curata.com/" target="_blank" rel="noopener noreferrer">Curata</a> a créé une infographie reprenant les 5 éléments composant une publication de curation de contenu. Nous allons les passer en revue afin que vous sachiez comment créer le post idéal.</p>
+<h2>1. Trouver un nouveau titre</h2>
+<p>Le titre de l’article vous convient peut-être, mais pour une question de SEO il est primordial de le changer dans votre publication. Cela vous évite de rentrer en compétition avec l’article original dans les résultats de recherche.</p>
+<p>N’oubliez pas aussi que le titre est déterminant pour <a href="https://www.redacteur.com/blog/titres-engagement-reseaux-sociaux/" target="_blank" rel="noopener noreferrer">inciter votre audience à cliquer</a> sur votre publication.</p>
+<p>Vous devez donc trouver un titre en lien avec les attentes de votre communauté et qui entre dans le contexte de votre activité.</p>
+<figure id="attachment_14376" aria-describedby="caption-attachment-14376" style="width: 600px" class="wp-caption aligncenter"><img decoding="async" class="wp-image-14376 size-full" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20468'%3E%3C/svg%3E" alt="Modification titre curation contenu" width="600" height="468" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu.jpg 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-300x234.jpg 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-60x47.jpg 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-370x289.jpg 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-270x211.jpg 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-385x300.jpg 385w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-570x445.jpg 570w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu.jpg" /><noscript><img decoding="async" class="wp-image-14376 size-full" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu.jpg" alt="Modification titre curation contenu" width="600" height="468" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu.jpg 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-300x234.jpg 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-60x47.jpg 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-370x289.jpg 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-270x211.jpg 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-385x300.jpg 385w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/titre-curation-contenu-570x445.jpg 570w" sizes="(max-width: 600px) 100vw, 600px" /></noscript><figcaption id="caption-attachment-14376" class="wp-caption-text">Titre original : How to Repurpose Blog Content for Social Media</figcaption></figure>
+<div class="container-slider">
+<a href="https://www.redacteur.com/?source=blog-inside-single-post">
+<p class="slider-desc">Faites rédiger tous vos contenus par des professionnels</p>
+
+<div class="slider-contain">
+<div class="slider">
+<div class="slide-track">
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-fichesproduits.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-fichesproduits.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-livreblanc.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-livreblanc.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-blog.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-blog.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" data-lazy-srcset="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg.webp" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20180%20250&#039;%3E%3C/svg%3E"/>
+<img src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20180%20250&#039;%3E%3C/svg%3E" alt="" width="180" height="250" data-lazy-src="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg"/>
+</picture>
+<noscript><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg" alt="" width="180" height="250"/>
+</picture>
+</noscript></div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-presse.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-presse.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-fichesproduits.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-fichesproduits.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-livreblanc.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-livreblanc.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-blog.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-blog.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+<div class="slide"><picture>
+<source type="image/webp" data-lazy-srcset="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg.webp" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20180%20250&#039;%3E%3C/svg%3E"/>
+<img src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20180%20250&#039;%3E%3C/svg%3E" alt="" width="180" height="250" data-lazy-src="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg"/>
+</picture>
+<noscript><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/10/vignette-retranscription.jpg" alt="" width="180" height="250"/>
+</picture>
+</noscript></div>
+<div class="slide"><picture>
+<source type="image/webp" srcset="/blog/wp-content/uploads/sites/6/2022/07/vignette-presse.jpg.webp"/>
+<img src="/blog/wp-content/uploads/sites/6/2022/07/vignette-presse.jpg" alt="" width="180" height="250"/>
+</picture>
+</div>
+
+</div>
+</div>
+</div>
+<span class="mks_button mks_button_small rounded slider-cta" style="line-height: 45px;">Trouver un rédacteur</span>
+<p class="slider-subcta">+15 000 rédacteurs disponibles</p>
+</a>
+</div><h2>2. Insérer une nouvelle image</h2>
+<p>En insérant une image votre post aura plus de chance d’être partagé.</p>
+<p>Mais attention, il ne s’agit pas de reprendre celle présente dans l’article original. Là aussi vous devez apporter votre touche personnelle.</p>
+<p>L’idéal est d’insérer votre visuel en début d’article. Et que vous mettiez une photographie, une illustration, etc, n’oubliez que l’image doit être en lien avec le sujet.</p>
+<blockquote><p>À lire aussi : <a href="https://www.redacteur.com/blog/creation-vs-curation-de-contenu/">Création VS curation de contenus : que choisir ?</a></p></blockquote>
+<h2>3. Rédiger votre propre texte</h2>
+<p>Le <a href="https://www.redacteur.com/blog/logiciel-anti-plagiat-gratuit/" target="_blank" rel="noopener noreferrer">duplicate content est à bannir</a>, c’est donc en toute logique que vous ne pouvez pas vous contenter de reprendre le texte de l’article.</p>
+<p>Vous pouvez ajouter votre propre perspective, une objection, des informations complémentaires, une analyse, etc. C’est le moment de montrer votre expertise et d’apporter de la valeur ajoutée à votre audience.</p>
+<p>En plus, en mêlant vos propos à ceux de l’article source c’est un vrai plus pour votre référencement. Rappelez-vous, les <a href="https://www.redacteur.com/blog/seo-criteres-eat-google/" target="_blank" rel="noopener noreferrer">critères E-A-T de Google</a> exigent un contenu de qualité venant d’une source experte.</p>
+<p>La curation de contenu est aussi l’opportunité de renvoyer vos lecteurs vers vos autres articles. Vous ne devez en effet pas oublier ces contenus uniques sur lesquels vous avez passé du temps. Formez un <a href="https://www.redacteur.com/blog/seo-maillage-interne-efficace/">maillage interne</a> pertinent avec des liens vers des articles et ebooks évoquant un sujet similaire à votre publication.</p>
+<p>Enfin, n’oubliez pas de citer l’auteur et la source de l’article original en insérant en lien vers l’article en question.</p>
+<h2>4. Insérer des citations</h2>
+<p>L’un des principaux avantages de la curation de contenu est de faire bénéficier votre audience d’une expertise extérieure.</p>
+<p>Pour cela, rien de mieux que les citations, mais attention à bien la choisir.</p>
+<p>Veillez à sélectionner une citation ou des statistiques qui surprennent, éduquent ou divertissent vos lecteurs.</p>
+<figure id="attachment_14375" aria-describedby="caption-attachment-14375" style="width: 600px" class="wp-caption aligncenter"><img decoding="async" class="wp-image-14375 size-full" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20243'%3E%3C/svg%3E" alt="Citation curation contenu" width="600" height="243" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu.jpg 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-300x122.jpg 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-60x24.jpg 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-370x150.jpg 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-270x109.jpg 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-570x231.jpg 570w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu.jpg" /><noscript><img decoding="async" class="wp-image-14375 size-full" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu.jpg" alt="Citation curation contenu" width="600" height="243" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu.jpg 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-300x122.jpg 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-60x24.jpg 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-370x150.jpg 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-270x109.jpg 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/citation-curation-contenu-570x231.jpg 570w" sizes="(max-width: 600px) 100vw, 600px" /></noscript><figcaption id="caption-attachment-14375" class="wp-caption-text">Source : <a href="https://www.brainpickings.org/" target="_blank" rel="noopener noreferrer">Brain Pickings</a></figcaption></figure>
+<h2>5. Ajouter un call-to-action</h2>
+<p>Les call-to-action doivent normalement apparaître dans chacun de vos articles, mais ils sont encore plus importants dans le cadre d’une curation de contenu.</p>
+<p>Offrez à votre audience un ebook ou un webinar pour les aider à développer leurs connaissances sur le sujet de votre publication. Le fait de garder vos lecteurs engagés renforce la façon dont vous répondez à leurs besoins.</p>
+<p>Notez que votre CTA peut aussi avoir pour vocation de convertir votre lecteur en abonné, prospect ou client.</p>
+<p>&nbsp;</p>
+<p>Finalement, même si la curation de contenu n’est pas de la création pure et dure, il ne s’agit pas non plus d’un simple copié / collé. Votre contenu doit refléter votre image et être en lien avec votre secteur d’activité.</p>
+<p>Pour aller plus loin, n’oubliez pas d’ajouter des boutons pour faciliter le partage de votre article les réseaux sociaux et ainsi amplifier son impact. Vous pouvez même créer des catégories et des tags pour que vos lecteurs retrouvent plus facilement votre contenu.</p>
+<p>Voir l’intégralité de l’infographie :</p>
+<p><img decoding="async" class="aligncenter wp-image-14362 size-full" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%201149'%3E%3C/svg%3E" alt="Infographie curation de contenu" width="600" height="1149" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu.png 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-157x300.png 157w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-535x1024.png 535w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-31x60.png 31w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-370x709.png 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-270x517.png 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-570x1092.png 570w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu.png" /><noscript><img decoding="async" class="aligncenter wp-image-14362 size-full" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu.png" alt="Infographie curation de contenu" width="600" height="1149" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu.png 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-157x300.png 157w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-535x1024.png 535w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-31x60.png 31w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-370x709.png 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-270x517.png 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2018/12/infographie-curation-contenu-570x1092.png 570w" sizes="(max-width: 600px) 100vw, 600px" /></noscript></p>
+
+    
+    
+    		    
+</div>
+    
+    
+
+</div>
+
+</article>
+            
+
+            	<div class="gridlove-ban"><aside class="gridlove-box box-inner-p-bigger" id="below-single-post">
+<a href="/packs-strategie-contenu-seo/?source=blog-below-single-post" target="_blank">
+    <div class="row">
+        <p class="h4">NOUVEAU : Votre stratégie de contenus clés en mains</p>
+        <p>Améliorez votre référencement sur le web</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="gridlove-box">
+                    <div data-bg="/blog/wp-content/uploads/sites/6/2022/10/bg-cards-audit0.webp" class="box-inner-p rocket-lazyload" style="">
+                        <div class="entry-title">
+                            <p>Réalisation d'un<br/>
+                            <span class="AvM">Audit sémantique</span></p>
+                            <p class="AmV">Livraison sous 7 jours</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="gridlove-box">
+                    <div data-bg="/blog/wp-content/uploads/sites/6/2022/10/bg-cards-sujets0.webp" class="box-inner-p rocket-lazyload" style="">
+                        <div class="entry-title">
+                            <p>Présentation de nouvelles<br/>
+                                <span class="AvM">Idées de contenus</span></p>
+                            <p class="AmV">Jusqu'à 60 sujets</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="gridlove-box">
+                    <div data-bg="/blog/wp-content/uploads/sites/6/2022/10/bg-cards-redaction0.webp" class="box-inner-p rocket-lazyload" style="">
+                        <div class="entry-title">
+                            <p>Rédaction de<br/>
+                                <span class="AvM">Vos textes SEO</span></p>
+                            <p class="AmV">Avec balisage HTML</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="gridlove-box">
+                    <div data-bg="/blog/wp-content/uploads/sites/6/2022/10/bg-cards-calendrier0_1.webp" class="box-inner-p rocket-lazyload" style="">
+                        <div class="entry-title">
+                            <p>Proposition de<br/>
+                                <span class="AvM">Calendrier éditorial</span></p>
+                            <p class="AmV">Par nos experts SEO</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <center><span class="mks_button mks_button_medium rounded">Découvrir nos offres SEO</span></center>
+        </div>
+    </div>
+</a>
+</aside></div>
+
+            
+    
+    
+        
+            <div class="gridlove-related">
+                <div class="gridlove-module">
+
+                    <div class="module-header"><div class="module-title"><h4 class="h2">Articles similaires</h4></div></div>
+                                        <div class="row">
+                        
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <article class="gridlove-post gridlove-post-a gridlove-box gridlove-highlight post-11034 post type-post status-publish format-standard has-post-thumbnail hentry category-strategie-editoriale">
+
+            <div class="entry-image">
+            <a href="https://www.redacteur.com/blog/construire-ligne-editoriale/" title="Comment construire votre ligne éditoriale en 9 étapes ?"><img width="370" height="185" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20370%20185'%3E%3C/svg%3E" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="Trouver la ligne éditoriale" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2016/02/trouver-ligne-editoriale-370x185.jpg" /><noscript><img width="370" height="185" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2016/02/trouver-ligne-editoriale-370x185.jpg" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="Trouver la ligne éditoriale" loading="lazy" /></noscript></a>
+            <div class="entry-category">
+                
+                            </div>
+        </div>
+    
+
+    <div class="box-inner-p">
+        <div class="box-inner-ellipsis">
+            <h2 class="entry-title h3"><a href="https://www.redacteur.com/blog/construire-ligne-editoriale/">Comment construire votre ligne éditoriale en 9 étapes ?</a></h2>        </div>
+
+        
+                    <div class="entry-meta"><div class="meta-item meta-views">84 288 vues</div><div class="meta-item meta-date"><span class="updated">3 novembre 2022</span></div></div>
+            </div>
+
+</article>                            </div>
+
+                        
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <article class="gridlove-post gridlove-post-a gridlove-box gridlove-highlight post-14394 post type-post status-publish format-standard has-post-thumbnail hentry category-strategie-editoriale">
+
+            <div class="entry-image">
+            <a href="https://www.redacteur.com/blog/creer-calendrier-editorial/" title="Comment créer un calendrier éditorial ? [Modèle gratuit à télécharger]"><img width="370" height="185" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20370%20185'%3E%3C/svg%3E" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2019/01/redacteur-blog-img-une-calendrier-edito-modele-a-telecharger-370x185.jpg" /><noscript><img width="370" height="185" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2019/01/redacteur-blog-img-une-calendrier-edito-modele-a-telecharger-370x185.jpg" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="" loading="lazy" /></noscript></a>
+            <div class="entry-category">
+                
+                            </div>
+        </div>
+    
+
+    <div class="box-inner-p">
+        <div class="box-inner-ellipsis">
+            <h2 class="entry-title h3"><a href="https://www.redacteur.com/blog/creer-calendrier-editorial/">Comment créer un calendrier éditorial ? [Modèle gratuit à télécharger]</a></h2>        </div>
+
+        
+                    <div class="entry-meta"><div class="meta-item meta-views">73 367 vues</div><div class="meta-item meta-date"><span class="updated">12 juillet 2023</span></div></div>
+            </div>
+
+</article>                            </div>
+
+                        
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <article class="gridlove-post gridlove-post-a gridlove-box gridlove-highlight post-29494 post type-post status-publish format-standard has-post-thumbnail hentry category-strategie-editoriale">
+
+            <div class="entry-image">
+            <a href="https://www.redacteur.com/blog/exemples-slogans-inspirants-marque/" title="8 exemples de slogans inspirants pour votre marque"><img width="370" height="185" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20370%20185'%3E%3C/svg%3E" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="Exemples de slogan pour votre marque" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/02/slogan-marque-370x185.png" /><noscript><img width="370" height="185" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2022/02/slogan-marque-370x185.png" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="Exemples de slogan pour votre marque" loading="lazy" /></noscript></a>
+            <div class="entry-category">
+                
+                            </div>
+        </div>
+    
+
+    <div class="box-inner-p">
+        <div class="box-inner-ellipsis">
+            <h2 class="entry-title h3"><a href="https://www.redacteur.com/blog/exemples-slogans-inspirants-marque/">8 exemples de slogans inspirants pour votre marque</a></h2>        </div>
+
+        
+                    <div class="entry-meta"><div class="meta-item meta-views">60 704 vues</div><div class="meta-item meta-date"><span class="updated">3 février 2023</span></div></div>
+            </div>
+
+</article>                            </div>
+
+                        
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <article class="gridlove-post gridlove-post-a gridlove-box gridlove-highlight post-6917 post type-post status-publish format-standard has-post-thumbnail hentry category-strategie-editoriale">
+
+            <div class="entry-image">
+            <a href="https://www.redacteur.com/blog/e-commerce-guide-demarage/" title="E-commerce pour les nuls : le guide pour démarrer une boutique en ligne"><img width="370" height="185" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20370%20185'%3E%3C/svg%3E" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="Guide pour créer un site e-commerce" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2019/08/guide-creer-ecommerce-370x185.jpg" /><noscript><img width="370" height="185" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2019/08/guide-creer-ecommerce-370x185.jpg" class="attachment-gridlove-a4 size-gridlove-a4 wp-post-image" alt="Guide pour créer un site e-commerce" loading="lazy" /></noscript></a>
+            <div class="entry-category">
+                
+                            </div>
+        </div>
+    
+
+    <div class="box-inner-p">
+        <div class="box-inner-ellipsis">
+            <h2 class="entry-title h3"><a href="https://www.redacteur.com/blog/e-commerce-guide-demarage/">E-commerce pour les nuls : le guide pour démarrer une boutique en ligne</a></h2>        </div>
+
+        
+                    <div class="entry-meta"><div class="meta-item meta-views">50 570 vues</div><div class="meta-item meta-date"><span class="updated">21 août 2019</span></div></div>
+            </div>
+
+</article>                            </div>
+
+                                            </div>
+                </div>
+            </div>
+
+        
+        
+    
+
+        </div>
+
+        
+
+	<div class="gridlove-sidebar">
+
+						<div id="custom_html-2" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><div id="portage" class="sidebar-bg widget_text widget gridlove-box widget_custom_html"><div class="h4 widget-title">Lancez votre activité</div><div class="textwidget custom-html-widget"><p>
+	Profitez des avantages du salarié et de la liberté du freelance avec le portage salarial.
+</p>
+<a href="/pages/portage-salarial#open-portage" target="_blank" rel="noopener"><span class="mks_button mks_button_medium rounded">Découvrir mon salaire</span></a></div></div></div></div><div id="media_image-7" class="widget gridlove-box widget_media_image"><a href="https://webinaires.net/?source=redacteur-sidebar" target="_blank" rel="noopener"><picture class="image wp-image-38787  attachment-full size-full" decoding="async" style="max-width: 100%; height: auto;">
+<source type="image/webp" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog.png.webp 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-370x238.png.webp 370w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20600%20386&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 600px) 100vw, 600px"/>
+<img width="600" height="386" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20600%20386&#039;%3E%3C/svg%3E" alt="Webinaires.net" decoding="async" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog.png 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-300x193.png 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-60x39.png 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-370x238.png 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-270x174.png 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-570x367.png 570w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog.png"/>
+</picture>
+<noscript><picture class="image wp-image-38787  attachment-full size-full" decoding="async" style="max-width: 100%; height: auto;">
+<source type="image/webp" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog.png.webp 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-370x238.png.webp 370w" sizes="(max-width: 600px) 100vw, 600px"/>
+<img width="600" height="386" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog.png" alt="Webinaires.net" decoding="async" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog.png 600w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-300x193.png 300w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-60x39.png 60w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-370x238.png 370w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-270x174.png 270w, https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/10/webinaires-net-blog-570x367.png 570w" sizes="(max-width: 600px) 100vw, 600px"/>
+</picture>
+</noscript></a></div>		
+						<div class="gridlove-sticky-sidebar">
+					<div id="custom_html-12" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><div id="sidebar-newsletter">
+<div class="sidebar-nl" >
+	<picture>
+<source type="image/webp" data-lazy-srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/02/img-side-nl-redacteur.png.webp" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20158&#039;%3E%3C/svg%3E"/>
+<img src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20158&#039;%3E%3C/svg%3E" alt="Livre blanc offert - 3 mois pour gagner 100000 visiteurs avec la puissance du référencement naturel" width="150" height="158" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/02/img-side-nl-redacteur.png"/>
+</picture>
+<noscript><picture>
+<source type="image/webp" srcset="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/02/img-side-nl-redacteur.png.webp"/>
+<img src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/02/img-side-nl-redacteur.png" alt="Livre blanc offert - 3 mois pour gagner 100000 visiteurs avec la puissance du référencement naturel" width="150" height="158"/>
+</picture>
+</noscript>
+<p class="h4">
+	Abonnez-vous à la newsletter
+</p>
+<ul>
+	<li class="li-rocket">Tendances et astuces <strong>rédaction et SEO</strong></li>
+	<li class="li-fire">Déjà + de <strong>40&nbsp;000 abonnés</strong></li>
+	<li class="li-gift">Ebook : <strong>&laquo; Nos secrets SEO &raquo;</strong></li>
+</ul>
+</div>
+<div class="triangle-with-shadow"></div>
+	<form action="https://newsletter.codeur.com/sendy/subscribe" method="POST" accept-charset="utf-8" target="_blank" class="subscription">
+							<input type="email" name="email" id="email" autocomplete="on" placeholder="Votre adresse email" class="email form-control">
+		<div class="subscribe-ok">
+		<button type="submit" aria-label="Inscription"><i class="fa fa-solid fa-arrow-right"></i></button>
+					</div>
+							<input type="hidden" name="list" value="rm18fJB6DPnkoh892i5rnmKw">
+							<input type="hidden" name="subform" value="yes">
+</form>
+</div></div></div>				</div>
+		
+	</div>
+
+    </div>
+
+</div>
+
+
+
+
+
+	
+	<div id="footer" class="gridlove-footer">
+
+		
+				<div class="container">
+					<div class="row">
+						
+													<div class="col-lg-3 col-md-6 col-sm-12">
+																	<div id="custom_html-8" class="widget_text widget widget_custom_html"><h4 class="widget-title">SEO, rédaction web, content marketing…</h4><div class="textwidget custom-html-widget"><p>Recevez les conseils, tendances et sélections d'outils de nos experts directement dans votre boîte mail.</p>
+<form action="https://newsletter.codeur.com/sendy/subscribe" method="POST" accept-charset="utf-8" target="_blank"><input type="email" name="email" id="email" autocomplete="on" placeholder="Votre adresse email"/><input type="hidden" name="list" value="8924MKtwajloARLc3QZaaK8w"/><input type="hidden" name="subform" value="yes"/><input type="submit" name="submit" id="submit" class="button" value="Recevoir la newsletter"/></form></div></div><div id="mks_social_widget-2" class="widget mks_social_widget">
+		
+								<ul class="mks_social_widget_ul">
+							<li><a href="https://www.linkedin.com/company/redacteur-com" title="Linkedin" class="socicon-linkedin soc_circle" target="_blank" rel="noopener" style="width: 42px; height: 42px; font-size: 16px;line-height:47px;"><span>linkedin</span></a></li>
+							<li><a href="https://twitter.com/Redacteurcom" title="Twitter" class="socicon-twitter soc_circle" target="_blank" rel="noopener" style="width: 42px; height: 42px; font-size: 16px;line-height:47px;"><span>twitter</span></a></li>
+							<li><a href="https://www.facebook.com/redacteurcom" title="Facebook" class="socicon-facebook soc_circle" target="_blank" rel="noopener" style="width: 42px; height: 42px; font-size: 16px;line-height:47px;"><span>facebook</span></a></li>
+							<li><a href="https://www.youtube.com/channel/UCgj9ySM9xy3gdL8qBafl9Uw/" title="YouTube" class="socicon-youtube soc_circle" target="_blank" rel="noopener" style="width: 42px; height: 42px; font-size: 16px;line-height:47px;"><span>youtube</span></a></li>
+						</ul>
+		
+
+		</div>															</div>
+													<div class="col-lg-3 col-md-6 col-sm-12">
+																	<div id="nav_menu-2" class="widget widget_nav_menu"><h4 class="widget-title">Retrouvez tous les services du groupe</h4><div class="menu-nos-services-container"><ul id="menu-nos-services" class="menu"><li id="menu-item-33752" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33752"><a target="_blank" rel="noopener" href="https://www.redacteur.com/packs-strategie-contenu-seo/?source=blog-footer">Stratégie de contenu SEO</a></li>
+<li id="menu-item-33753" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33753"><a href="https://www.redacteur.com/redaction-textes?source=blog-footer">Rédaction</a></li>
+<li id="menu-item-33754" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33754"><a target="_blank" rel="noopener" href="https://traduc.com/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Traduction</a></li>
+<li id="menu-item-33755" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33755"><a target="_blank" rel="noopener" href="https://graphiste.com?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Graphisme</a></li>
+<li id="menu-item-33756" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33756"><a target="_blank" rel="noopener" href="https://www.codeur.com/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Développement</a></li>
+</ul></div></div>															</div>
+													<div class="col-lg-3 col-md-6 col-sm-12">
+																	<div id="nav_menu-3" class="widget widget_nav_menu"><h4 class="widget-title">Découvrez tous nos outils gratuits</h4><div class="menu-nos-outils-gratuits-container"><ul id="menu-nos-outils-gratuits" class="menu"><li id="menu-item-33834" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33834"><a target="_blank" rel="noopener" href="https://www.facture.net/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Facturation en ligne</a></li>
+<li id="menu-item-33798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33798"><a href="https://www.redacteur.com/compteur-de-mots?source=blog-footer">Compteur de mots</a></li>
+<li id="menu-item-33800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33800"><a target="_blank" rel="noopener" href="https://nuagedemots.co/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Nuage de mots</a></li>
+<li id="menu-item-33799" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33799"><a target="_blank" rel="noopener" href="https://cahiersdescharges.com/?utm_source=traduc&#038;utm_medium=blog&#038;utm_campaign=footer">Cahiers des charges</a></li>
+<li id="menu-item-33835" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33835"><a target="_blank" rel="noopener" href="https://tauxhoraire.com/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Calcul du taux horaire</a></li>
+<li id="menu-item-33801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33801"><a target="_blank" rel="noopener" href="https://www.generateur.name/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Noms d&#8217;entreprise</a></li>
+<li id="menu-item-33836" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33836"><a target="_blank" rel="noopener" href="https://www.palettedecouleur.net/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Palettes de couleurs</a></li>
+<li id="menu-item-38793" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38793"><a href="https://webinaires.net/?source=redacteur-footer">Webinaires.net</a></li>
+</ul></div></div>															</div>
+													<div class="col-lg-3 col-md-6 col-sm-12">
+																	<div id="nav_menu-4" class="widget widget_nav_menu"><h4 class="widget-title">À propos de Redacteur.com</h4><div class="menu-a-propos-container"><ul id="menu-a-propos" class="menu"><li id="menu-item-33762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33762"><a href="/comment-ca-marche">Comment ça marche</a></li>
+<li id="menu-item-33764" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33764"><a href="https://www.redacteur.com/identities/sign_up?source=blog-footer">S&#8217;inscrire comme rédacteur</a></li>
+<li id="menu-item-33765" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33765"><a target="_blank" rel="noopener" href="https://www.codeur.sarl/devenir-annonceur/?utm_source=redacteur&#038;utm_medium=blog&#038;utm_campaign=footer">Devenir annonceur</a></li>
+<li id="menu-item-33766" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33766"><a href="https://www.redacteur.com/pages/partenaires?source=blog-footer">Offres partenaires</a></li>
+<li id="menu-item-33837" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33837"><a href="https://www.redacteur.com/pages/politique-de-confidentialite?source=blog-footer">Politique de confidentialité</a></li>
+<li id="menu-item-33838" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33838"><a href="https://www.redacteur.com/pages/mentions-legales?source=blog-footer">Mentions légales</a></li>
+<li id="menu-item-38693" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38693"><a href="#"><span data-cc="c-settings">Gestion des cookies</span></a></li>
+</ul></div></div>															</div>
+						
+					</div>
+				</div>
+
+		
+		
+				<div class="gridlove-copyright">
+					<div class="container">
+						<p style="text-align: center">&copy; 2023 <a href="/?source=blog-copyright">Redacteur.com</a>, la plateforme de rédaction pour tous vos contenus.</p>					</div>
+				</div>
+
+		
+	</div>
+
+
+
+<div class="gridlove-sidebar-action-wrapper">
+
+	<span class="gridlove-action-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+
+	<div class="gridlove-sidebar-action-inside">
+
+		<div class="hidden-lg-up widget gridlove-box widget_nav_menu">
+					<ul id="menu-categories-1" class="gridlove-mobile-menu"><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33804"><a href="https://www.redacteur.com/blog/contenu-web/">Content marketing</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-33815"><a href="https://www.redacteur.com/blog/redaction-web/">Rédaction web</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33822"><a href="https://www.redacteur.com/blog/seo/">Stratégie SEO</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33831"><a href="https://www.redacteur.com/blog/definition/">Lexique</a></li>
+</ul>		</div>
+
+									<div id="custom_html-3" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://www.redacteur.com/?source=blog-header-sidebar" target="_blank" rel="noopener">
+	<img width="392" height="164" src="/blog/wp-content/themes/gridlove-child/assets/img/logo-redacteur.svg" alt="Redacteur.com" id="redacteur">
+	<p>Les 15 000 rédacteurs professionnels spécialisés dans plus de 30 domaines s’occupent de rédiger tous vos contenus web.</p>
+</a></div></div><div id="custom_html-4" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://traduc.com/?utm_source=redacteur&utm_medium=blog&utm_campaign=header-sidebar" target="_blank" rel="noopener">
+	<img width="325" height="175" src="/blog/wp-content/themes/gridlove-child/assets/img/logo-traduc.svg" alt="Traduc.com" id="traduc">
+	<p>Obtenez des traductions de qualité en faisant appel à des traducteurs professionnels respectueux de vos contraintes de délai.</p>
+</a></div></div><div id="custom_html-5" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://www.codeur.com/?utm_source=redacteur&utm_medium=blog&utm_campaign=header-sidebar" target="_blank" rel="noopener">
+	<img width="182" height="34" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20182%2034'%3E%3C/svg%3E" alt="Codeur.com" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-codeur.svg"><noscript><img width="182" height="34" src="/blog/wp-content/themes/gridlove-child/assets/img/logo-codeur.svg" alt="Codeur.com"></noscript>
+	<p>Depuis 2006, la plateforme française de référence pour trouver un prestataire qui pourra vous accompagner dans tous vos projets web.</p>
+</a></div></div><div id="custom_html-6" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://graphiste.com/?utm_source=redacteur&utm_medium=blog&utm_campaign=header-sidebar" target="_blank" rel="noopener">
+	<img width="469" height="90" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20469%2090'%3E%3C/svg%3E" alt="Graphiste.com" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-graphiste.svg"><noscript><img width="469" height="90" src="/blog/wp-content/themes/gridlove-child/assets/img/logo-graphiste.svg" alt="Graphiste.com"></noscript>
+	<p>Choisissez rapidement et gratuitement le graphiste qui correspond à vos attentes parmi plus de 30 000 graphistes professionnels.</p>
+</a></div></div><div id="custom_html-7" class="widget_text widget gridlove-box widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://www.facture.net/?utm_source=redacteur&utm_medium=blog&utm_campaign=header-sidebar" target="_blank" rel="noopener">
+	<img width="178" height="36" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20178%2036'%3E%3C/svg%3E" alt="Facture.net" data-lazy-src="/blog/wp-content/themes/gridlove-child/assets/img/logo-facture.svg"><noscript><img width="178" height="36" src="/blog/wp-content/themes/gridlove-child/assets/img/logo-facture.svg" alt="Facture.net"></noscript>
+	<p>Gérez votre fichier client, établissez des devis et générez des factures avec cet outil certifié, simple d’utilisation et entièrement gratuit.</p>
+</a></div></div>					
+
+	</div>
+
+</div>
+
+<div class="gridlove-sidebar-action-overlay"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {/* <![CDATA[ */ jQuery(document).ready( function() { jQuery.post( "https://www.redacteur.com/blog/wp-admin/admin-ajax.php", { action : "entry_views", _ajax_nonce : "33e7154f5f", post_id : 14360 } ); } ); /* ]]> */});</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-flexible-shortcodes/js/main.js?ver=1699605903' id='mks_shortcodes_js-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/blog(\/feed|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?(.*)wp\\-json(\/.*|$))|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/www.redacteur.com\/blog","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-includes/js/masonry.min.js?ver=4.2.2' id='masonry-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2b' id='jquery-masonry-js' defer></script>
+<script type='text/javascript' id='gridlove-main-js-extra'>
+/* <![CDATA[ */
+var gridlove_js_settings = {"rtl_mode":"","header_sticky":"","header_sticky_offset":"100","header_sticky_up":"","logo":"https:\/\/www.redacteur.com\/blog\/wp-content\/uploads\/sites\/6\/2022\/10\/logo-redacteur-blog_midheight.svg","logo_retina":"","logo_mini":"","logo_mini_retina":"","gridlove_gallery":"1","responsive_secondary_nav":"","responsive_more_link":"Plus","responsive_social_nav":""};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/themes/gridlove/assets/js/min.js?ver=1699605903' id='gridlove-main-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' data-rocket-src='https://www.redacteur.com/blog/wp-content/cache/min/6/blog/wp-content/plugins/meks-easy-social-share/assets/js/main.js?ver=1699605903' id='meks_ess-main-js' defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.redacteur.com/blog/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>
+<!-- modal -->
+<div class="widget_text follow-modal" id="follow-modal"><div class="widget_text follow-modal-container"><div class="widget_text follow-modal-container-inner"><div class="textwidget custom-html-widget"><div class="right-modal">
+<p class="titre-modal">Vous avez besoin de contenus&nbsp;SEO&nbsp;?</p>
+<p class="button-modal"><a href="/steps/orders/new?source=blog-modal"><span class="mks_button mks_button_small rounded" style="color: #ffffff; background-color: #111;">Commander des textes</span></a></p>
+
+</div>
+<div class="left-modal"><img width="844" height="544" class="freelance-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20844%20544'%3E%3C/svg%3E" alt="rédactrice freelance" data-lazy-src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/11/redactrice-standing.webp"/><noscript><img width="844" height="544" class="freelance-image" src="https://www.redacteur.com/blog/wp-content/uploads/sites/6/2023/11/redactrice-standing.webp" alt="rédactrice freelance"/></noscript></div></div><div class="close_modal activeclose" onclick="FermetureFollowModale()" id="close-follow-modale" rel="noreferrer nofollow"><div class="closex"></div></div></div></div></div>
+<!-- cookies -->
+<script type="rocketlazyloadscript" data-minify="1" defer data-rocket-src="https://www.redacteur.com/blog/wp-content/cache/min/6/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js?ver=1699605903"></script>
+<script type="rocketlazyloadscript">
+        window.addEventListener('load', function(){
+
+            // obtain plugin
+            var cc = initCookieConsent();
+
+            // run plugin with your configuration
+            cc.run({
+                current_lang: 'en',
+                autoclear_cookies: true,                   // default: false
+                page_scripts: true,                        // default: false
+
+                // mode: 'opt-in'                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
+                // delay: 0,                               // default: 0
+                // auto_language: '',                      // default: null; could also be 'browser' or 'document'
+                // autorun: true,                          // default: true
+                // force_consent: false,                   // default: false
+                // hide_from_bots: true,                   // default: true
+                // remove_cookie_tables: false             // default: false
+                // cookie_name: 'cc_cookie',               // default: 'cc_cookie'
+                // cookie_expiration: 182,                 // default: 182 (days)
+                // cookie_necessary_only_expiration: 182   // default: disabled
+                // cookie_domain: location.hostname,       // default: current domain
+                // cookie_path: '/',                       // default: root
+                // cookie_same_site: 'Lax',                // default: 'Lax'
+                // use_rfc_cookie: false,                  // default: false
+                // revision: 0,                            // default: 0
+
+                onFirstAction: function(user_preferences, cookie){
+                    // callback triggered only once on the first accept/reject action
+                },
+
+                onAccept: function (cookie) {
+                    // callback triggered on the first accept/reject action, and after each page load
+                },
+
+                onChange: function (cookie, changed_categories) {
+                    // callback triggered when user changes preferences after consent has already been given
+                },
+
+                        gui_options: {
+                            consent_modal: {
+                                layout: 'box',               // box/cloud/bar
+                                position: 'bottom right',     // bottom/middle/top + left/right/center
+                                transition: 'slide',           // zoom/slide
+                                swap_buttons: true            // enable to invert buttons
+                            },
+                            settings_modal: {
+                                layout: 'box',                 // box/bar
+                                position: 'right',              // left/right
+                                transition: 'slide'            // zoom/slide
+                            }
+                        },
+
+                languages: {
+                    'fr': {
+                        consent_modal: {
+                            description: 'Ce site utilise des cookies, vous pouvez <button type="button" data-cc="c-settings" class="cc-link">les sélectionner</button>.',
+                            primary_btn: {
+                                text: 'Tout accepter',
+                                role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                            },
+                            secondary_btn: {
+                                text: 'Tout refuser',
+                                role: 'accept_necessary'        // 'settings' or 'accept_necessary'
+                            }
+                        },
+                        settings_modal: {
+                            title: 'Préférences en matière de cookies',
+                            save_settings_btn: 'Enregistrer',
+                            accept_all_btn: 'Tout accepter',
+                            reject_all_btn: 'Tout refuser',
+                            close_btn_label: 'Fermer',
+                            // cookie_table_caption: 'Cookie list',
+                            cookie_table_headers: [
+                                {col1: 'Nom'},
+                                {col2: 'Domaine'},
+                                {col3: 'Expiration'},
+                                {col4: 'Description'}
+                            ],
+                            blocks: [
+                                {
+                                    title: 'Utilisation des cookies 📢',
+                                    description: 'Nous utilisons des cookies pour assurer les fonctionnalités de base du site Web et pour améliorer votre expérience en ligne. Vous pouvez choisir pour chaque catégorie d&rsquo;accepter/refuser quand vous le souhaitez. Pour plus de détails relatifs aux cookies et autres données sensibles, veuillez lire notre <a href="/pages/politique-de-confidentialite" class="cc-link">politique de confidentialité</a>.'
+                                }, {
+                                    title: 'Cookies strictement nécessaires',
+                                    description: 'Ces cookies sont indispensables au bon fonctionnement du site internet et ne nécessitent pas de consentement. Le suivi analytics est intégralement anonymisé pour bénéficier de cette exemption. Vous pouvez vous <a href="/pages/refuser-suivi-analytique">opposer au suivi</a> de votre navigation sur ce site web.',
+                                    toggle: {
+                                        value: 'necessary',
+                                        enabled: true,
+                                        readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                                    },
+                                    cookie_table: [
+                                        {
+                                            col1: '^_pk',
+                                            col2: 'www.redacteur.com',
+                                            col3: '13 mois',
+                                            col4: 'Cookie Matomo pour le suivi analytics anonymisé',
+                                            is_regex: true
+                                        }
+                                    ]
+                                }, {
+                                    title: 'Cookies de performances et d&rsquo;analyse',
+                                    description: 'Ces cookies permettent au site Web de mémoriser les choix que vous avez faits dans le passé ou d&rsquo;analyser via des applications tierces les intéractions sur le site.',
+                                    toggle: {
+                                        value: 'analytics',     // your cookie category
+                                        enabled: false,
+                                        readonly: false
+                                    },
+                                    cookie_table: [
+                                        {
+                                            col1: 'n/a',
+                                            col2: 'n/a',
+                                            col3: 'n/a',
+                                            col4: 'Nous n&rsquo;utilisons aucun cookie tiers pour le suivi analytics'
+                                        }
+                                    ]
+                                }, {
+                                    title: 'Cookies de publicité et de retargeting',
+                                    description: 'Ces cookies collectent des informations sur la façon dont vous utilisez le site Web, les pages que vous avez visitées et les liens sur lesquels vous avez cliqué. Toutes les données sont anonymisées et ne peuvent pas être utilisées pour vous identifier.',
+                                    toggle: {
+                                        value: 'targeting',
+                                        enabled: false,
+                                        readonly: false
+                                    },
+                                    cookie_table: [
+                                        {
+                                            col1: 'n/a',
+                                            col2: 'n/a',
+                                            col3: 'n/a',
+                                            col4: 'Nous n&rsquo;utilisons aucun cookie publicitaire ou de retargeting'
+                                        }
+                                    ]
+                                }, {
+                                    title: 'En savoir plus',
+                                    description: 'Pour toute question relative à notre politique en matière de cookies, veuillez <a class="cc-link" href="mailto:contact@codeur.com">nous contacter</a>.',
+                                }
+                            ]
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<script
+    type="text/plain"
+    data-cookiecategory="analytics">
+    console.log('"analytics" category accepted');
+</script>
+<script
+    type="text/plain"
+    data-cookiecategory="targeting">
+    console.log('"targeting" category accepted');
+</script>
+
+</body>
+
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1701505063 -->
