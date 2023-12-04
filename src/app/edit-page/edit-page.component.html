@@ -1,0 +1,46 @@
+<div class="max-w-2xl mx-auto mt-8">
+    <form  [formGroup]="formValue" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="firstname">
+          Your First Name
+        </label>
+        <input  formControlName="firstName" value="{{ArticleData.nom}}"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="firstname" name="firstname" type="text" placeholder="Your Name" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="lasttname">
+          Your Last Name
+        </label>
+        <input  formControlName="lastName" value="{{ArticleData.prenom}}"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="lastname" name="lastname" type="text" placeholder="Your Name" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="photo">
+          Your Photo URL
+        </label>
+        <input  formControlName="photo"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="photo" name="photo"  type="file" placeholder="Your Photo URL" >
+          
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="blog">
+          Your Blog
+        </label>
+        <textarea value="{{ArticleData.blogPost}}" formControlName="blogPost"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="blog" name="blog"  placeholder="Write your blog here" required></textarea>
+      </div>
+      <div class="flex items-center justify-between">
+        <button 
+          class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button" (click)="updateArticle()">
+          Edit blog
+        </button>
+      </div>
+    </form>
+  </div>
+  
+
