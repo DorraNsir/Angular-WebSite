@@ -49,8 +49,13 @@ articleModelObject:Article=new Article();
     );
   }
 
-  private constructImagePath(photo: File): string {
-    return `${this.imagePath}/${photo.name}`;
+  private constructImagePath(photo: string): string {
+    const photoArray = photo.split('\\');
+
+ 
+  const lastWord = photoArray[photoArray.length - 1];
+    console.log(lastWord)
+    return `${this.imagePath}/${lastWord}`;
   }
   updateArticle(){
     this.articleModelObject.nom=this.formValue.value.firstName;

@@ -35,7 +35,7 @@ export class AddBlogPageComponent  implements OnInit{
   private constructImagePath(photo: string): string {
     const photoArray = photo.split('\\');
 
-  // Get the last element of the array (which is the last word)
+ 
   const lastWord = photoArray[photoArray.length - 1];
     console.log(lastWord)
     return `${this.imagePath}/${lastWord}`;

@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-</head>
-<body>
+
+
     <nav class="container bg-pink-100 mx-auto p-6 ">
+       
         <div class="flex item-center justify-between">
             <div>
                 <img src="assets/images/education.png" alt="img" width="50px">
@@ -17,12 +11,17 @@
                 <a  class=" hover:text-pink-400" routerLink="/about">About</a>
                 <a class=" hover:text-pink-400" routerLink="/contact">Contact</a>
                 <a  class=" hover:text-pink-400" routerLink="/add">Add blog post</a>
+                <a  class=" hover:text-pink-400" routerLink="/loginPage">Login</a>
                 <a  class="bg-red-300 py-3 px-3 rounded-full text-white hover:bg-black"> Call Me</a>
             </div>
             <button id="mobile-btn" class="md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
             </button>
+    
         </div>
+        <!-- <div class="items-end">
+            <img src="assets/images/login.png" alt="img" width="50px">
+        </div> -->
         <div class="md:hidden">
             <div id="mobile-menu" class="absolute flex hidden flex-col items-center space-y-4 font-bold bg-gray-50 left-6 right-6 drop-shadow-lg border border-gray-300">
                 <a  class=" hover:text-pink-400" routerLink="/home">Home</a>
@@ -30,8 +29,8 @@
                 <a class=" hover:text-pink-400" routerLink="/contact">Contact</a>
                 <a  class=" hover:text-pink-400" routerLink="/add">Add blog post</a>
                 <a href="" class="bg-red-300 py-3 px-3 rounded-full text-white hover:bg-black"> Call Me</a>
+                <a href="">{{ getUserName() }}</a>
             </div>
         </div>
     </nav>
-</body>
-</html>
+
